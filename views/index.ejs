@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs")  %>
+
+<h1>
+<% 
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const d = new Date();
+    let date = d.getDate();
+    let day = days[d.getDay()];
+    let month = months[d.getMonth()];
+    let message = day+', '+date+' '+month
+%>
+<%= message %>
+</h1>
+<ul>
+    <%if (locals.arr){
+    for (let i = 0; i < arr.length; i++){%>
+        <div>
+            <input type="checkbox"/>
+            <li><%= arr[i] %></li>
+        </div>
+    <% }}; %>
+</ul>
+<form action="/submit" method="POST">
+    <input type="text" name="item" placeholder="New item" required/>
+    <input id="button" type="button" value="+"/>
+</form>
+<div class="ocean">
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+
+
+
+<%- include("partials/footer.ejs")  %>
